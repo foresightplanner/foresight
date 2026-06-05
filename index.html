@@ -83,9 +83,10 @@
               <div class="action-bar">
                 <!-- Paper (PDF) -->
                 <span class="action-item">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <a href="./static/pdfs/Foresight__CoRL_2026_.pdf"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper (Coming Soon)</span>
+                    <span>Paper</span>
                   </a>
                 </span>
                 <!-- Video -->
@@ -264,19 +265,13 @@
             <p class="has-text-weight-semibold">Long-horizon navigation mission</p>
             <video muted autoplay playsinline controls loop preload="metadata"
               style="width: 100%; border-radius: 10px; margin-bottom: 1rem;">
-              <source src="./static/videos/long_horizon_mission.mp4" type="video/mp4">
+              <source src="./static/videos/foresight_longhorizon.mp4" type="video/mp4">
             </video>
 
-            <p class="has-text-weight-semibold">Head-to-head comparison: Environment 1</p>
-            <video muted autoplay playsinline controls loop preload="metadata"
-              style="width: 100%; border-radius: 10px; margin-bottom: 1rem;">
-              <source src="./static/videos/head_to_head_env1.mp4" type="video/mp4">
-            </video>
-
-            <p class="has-text-weight-semibold">Head-to-head comparison: Environment 2</p>
+            <p class="has-text-weight-semibold">Head-to-head comparison: Detour (LeLaN, Alpamayo, Foresight)</p>
             <video muted autoplay playsinline controls loop preload="metadata"
               style="width: 100%; border-radius: 10px;">
-              <source src="./static/videos/head_to_head_env2.mp4" type="video/mp4">
+              <source src="./static/videos/detour1-compound.mp4" type="video/mp4">
             </video>
           </div>
 
@@ -295,37 +290,35 @@
             <h2 class="title is-4">Limitations</h2>
           </div>
 
-          <div class="columns is-vcentered is-variable is-6">
-            <!-- Left: Image illustrating limitations -->
-            <div class="column is-6">
+          <!-- <div class="columns is-vcentered is-variable is-6"> -->
+          <!-- <div class="column is-6">
               <figure class="image">
                 <img src="./static/images/limitations.jpg" alt="FORESIGHT limitations examples" loading="lazy"
                   style="border-radius: 10px;">
               </figure>
-            </div>
+            </div> -->
 
-            <!-- Right: Text describing limitations -->
-            <div class="column is-6">
-              <div class="content">
-                <p>
-                  While Foresight makes significant strides toward scalable mapless navigation, several challenges
-                  remain:
-                </p>
-                <ul>
-                  <li><strong>Credit assignment in multi-step refinement:</strong> Outcome-level supervision makes it
-                    hard to attribute gains to better critiques, critique-conditioned planning, or critique following.
-                    Process-level supervision could provide denser signal and reduce spurious correlations.</li>
-                  <li><strong>Memory and multi-view understanding:</strong> Navigation plans can degrade when
-                    relevant cues are sparse or absent from the local observation history. Retrieval-augmented memory
-                    and co-training on multi-view reasoning could improve cue grounding in these scenarios.</li>
-                  <li><strong>Static-environment focus:</strong> Our experiments primarily target static settings.
-                    Dynamic environments demand faster policies that reason over temporal relationships, which we leave
-                    for
-                    future work.</li>
-                </ul>
-              </div>
+          <div class="column is-10">
+            <div class="content">
+              <p>
+                While Foresight makes significant strides toward scalable mapless navigation, several challenges
+                remain:
+              </p>
+              <ul>
+                <li><strong>Credit assignment in multi-step refinement:</strong> Outcome-level supervision makes it
+                  hard to attribute gains to better critiques, critique-conditioned planning, or critique following.
+                  Process-level supervision could provide denser signal and reduce spurious correlations.</li>
+                <li><strong>Memory and multi-view understanding:</strong> Navigation plans can degrade when
+                  relevant cues are sparse or absent from the local observation history. Retrieval-augmented memory
+                  and co-training on multi-view reasoning could improve cue grounding in these scenarios.</li>
+                <li><strong>Static-environment focus:</strong> Our experiments primarily target static settings.
+                  Dynamic environments demand faster policies that reason over temporal relationships, which we leave
+                  for
+                  future work.</li>
+              </ul>
             </div>
           </div>
+          <!-- </div> -->
 
         </div>
       </div>
