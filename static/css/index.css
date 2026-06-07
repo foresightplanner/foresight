@@ -223,6 +223,79 @@ a:visited {
   background: rgba(0, 0, 0, 0.25);
 }
 
+/* Qualitative video switcher */
+.qual-switcher {
+  margin-top: 0.25rem;
+}
+
+.qual-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+@media screen and (max-width: 600px) {
+  .qual-tabs {
+    flex-direction: column;
+  }
+
+  .qual-tab {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+.qual-tab {
+  --tab-color: 255, 105, 55;
+
+  flex: 1 1 0;
+  min-width: 120px;
+
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+
+  cursor: pointer;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+
+  border: 1px solid rgb(var(--tab-color));
+  background: transparent;
+  color: rgb(var(--tab-color));
+
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.qual-tab--detour {
+  --tab-color: 85, 170, 230;
+}
+
+.qual-tab--sign {
+  --tab-color: 160, 70, 200;
+}
+
+.qual-tab--structural {
+  --tab-color: 220, 95, 75;
+}
+
+.qual-tab:hover {
+  background: rgba(var(--tab-color), 0.12);
+}
+
+.qual-tab.is-active {
+  background: rgb(var(--tab-color));
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(var(--tab-color), 0.35);
+}
+
+.qual-caption {
+  margin-top: 0.6rem;
+  color: #555;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 /* Acceptance styling */
 .acceptance-badge {
   display: flex;

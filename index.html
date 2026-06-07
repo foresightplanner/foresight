@@ -62,6 +62,32 @@
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("copyBibtexBtn");
     if (btn) btn.addEventListener("click", copyBibtex);
+
+    const switcher = document.getElementById("qualSwitcher");
+    if (switcher) {
+      const tabs = switcher.querySelectorAll(".qual-tab");
+      const video = document.getElementById("qualVideo");
+      const source = document.getElementById("qualVideoSource");
+      const caption = document.getElementById("qualCaption");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          if (tab.classList.contains("is-active")) return;
+
+          tabs.forEach((t) => {
+            t.classList.remove("is-active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
+
+          source.src = tab.dataset.src;
+          if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
+          video.load();
+          video.play().catch(() => { });
+        });
+      });
+    }
   });
 </script>
 
@@ -268,11 +294,35 @@
               <source src="./static/videos/foresight_longhorizon.mp4" type="video/mp4">
             </video>
 
-            <p class="has-text-weight-semibold">Head-to-head comparison: Detour (LeLaN, Alpamayo, Foresight)</p>
-            <video muted autoplay playsinline controls loop preload="metadata"
-              style="width: 100%; border-radius: 10px;">
-              <source src="./static/videos/detour1-compound.mp4" type="video/mp4">
-            </video>
+            <p class="has-text-weight-semibold">Head-to-head comparisons (LeLaN, Alpamayo, Foresight)</p>
+            <div class="qual-switcher" id="qualSwitcher">
+              <div class="qual-tabs" role="tablist" aria-label="Qualitative comparison categories">
+                <button class="qual-tab qual-tab--detour is-active" type="button" role="tab" aria-selected="true"
+                  data-src="./static/videos/detour1-compound.mp4"
+                  data-caption="Detour rerouting tasks require inferring instruction-aligned alternative routes when the current path is blocked.">
+                  Detour Rerouting
+                </button>
+                <button class=" qual-tab qual-tab--sign" type="button" role="tab" aria-selected="false"
+                  data-src="./static/videos/sign2-compound.mp4"
+                  data-caption="Sign following tasks require interpreting textual signs to reach the goal.">
+                  Sign Following
+                </button>
+                <button class="qual-tab qual-tab--structural" type="button" role="tab" aria-selected="false"
+                  data-src="./static/videos/structural1-compound.mp4"
+                  data-caption="Structural clue tasks require understanding structures like walkways, badge signs, or door mats that reveal the intended route.">
+                  Structural Clues
+                </button>
+              </div>
+              <video id="qualVideo" muted autoplay playsinline controls loop preload="metadata"
+                style="width: 100%; border-radius: 10px;">
+                <source id="qualVideoSource" src="./static/videos/detour1-compound.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="qual-caption" id="qualCaption">
+                Detour rerouting tasks require inferring instruction-aligned alternative routes when the current path is
+                blocked.
+              </p>
+            </div>
           </div>
 
         </div>
