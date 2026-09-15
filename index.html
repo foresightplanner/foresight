@@ -64,19 +64,18 @@
   <section id="abstract">
     <div class="wrap">
       <p class="section-kicker">Abstract</p>
-      <h2>Discovering which cues matter, then planning around them.</h2>
+      <h2>Discovering which cues matter, then planning using them.</h2>
 
-      <p>Open-world mapless navigation from sparse language instructions requires resolving underspecified goals and
-        inferring which environmental cues are relevant for reaching the goal&mdash;e.g., interpreting ramps, signs, or
-        detours that reveal where to go or which route to take. Prior works rely on closed-set factor categories or
-        identify cues before motion planning, missing plan-dependent cues. We argue that pretrained Vision-Language
-        Models (VLMs) can discover novel instruction-relevant cues, but require adaptation to focus on which cues matter
-        and how they should influence motion planning. We present <strong>Foresight</strong>, a test-time framework in
-        which a finetuned VLM alternates between proposing image-space motion plans and critiquing them using the
-        language goal and visual context, with subsequent plans conditioned on prior critiques to enable iterative
-        motion refinement before execution. To align critiques and refinements with open-set behavior preferences, we
-        learn a reward model from human feedback and use it to post-train the VLM with reinforcement learning in the
-        plan-critique loop. In offline evaluations and 6 real-world environments, Foresight improves average task
+      <p>Open-world mapless navigation from sparse language instructions requires inferring which environmental cues
+        matter &mdash; the ramp, sign, or detour that reveals where to go. Prior works draw cues from closed-set factor
+        categories or identify them before motion planning, missing plan-dependent cues. Pretrained Vision-Language
+        Models (VLMs) can discover such cues, but require adaptation to act on them.</p>
+
+      <p>We present <strong>Foresight</strong>, a test-time framework in which a finetuned VLM alternates between
+        proposing image-space motion plans and critiquing them against the language goal and visual context,
+        conditioning each plan on prior critiques to refine its motion before execution. A reward model learned from
+        human feedback post-trains the VLM with reinforcement learning inside this loop, aligning it with open-set
+        behavior preferences. Across offline evaluations and 6 real-world environments, Foresight improves average task
         success by <strong>37%</strong> and reduces interventions per mission by <strong>52%</strong> relative to
         state-of-the-art test-time reasoning and foundation-model baselines, while running in real-time on a Jetson AGX
         Orin.</p>
@@ -100,8 +99,11 @@
     <div class="wrap-wide">
       <figure class="fig-single wide">
         <div class="imgwrap">
-          <a href="./static/images/mainfigure.png">
-            <img src="./static/images/mainfigure.png" alt="Foresight architecture overview" loading="lazy">
+          <a href="./static/images/mainfigure.jpg">
+            <picture>
+              <source srcset="./static/images/mainfigure.webp" type="image/webp">
+              <img src="./static/images/mainfigure.jpg" alt="Foresight architecture overview" loading="lazy">
+            </picture>
           </a>
         </div>
         <figcaption><strong>Figure 1.</strong> The Foresight loop. A single finetuned VLM alternates between proposing
@@ -115,12 +117,13 @@
   <section id="training">
     <div class="wrap">
       <p class="section-kicker">Training</p>
-      <h2>Supervised finetuning, then preference reinforcement learning.</h2>
+      <h2>Supervised finetuning, then reinforcement learning with human preferences.</h2>
 
-      <p>To adapt pretrained VLMs for iterative refinement, we introduce a two-stage training recipe. We first apply
+      <p>To adapt pretrained VLMs for iterative refinement, we propose a simple two-stage training recipe. We first
+        apply
         supervised finetuning to teach the VLM the structure of the plan-critique loop. We then learn a reward model
         from human preference annotations to judge motion plan quality, and use it to post-train the VLM with
-        reinforcement learning &mdash; aligning critiques and refinements with open-set behavior preferences that are
+        reinforcement learning, aligning critiques and refinements with open-set behavior preferences that are
         difficult to capture with hand-designed objectives alone.</p>
     </div>
 
@@ -156,9 +159,12 @@
       <figure class="fig-single wide">
         <div class="imgwrap">
           <a href="./static/images/trainingdataset-satellite.jpg">
-            <img src="./static/images/trainingdataset-satellite.jpg"
-              alt="Satellite map with disjoint training, offline evaluation, and online evaluation regions, alongside example training instructions and held-out test episodes with plan critiques."
-              loading="lazy">
+            <picture>
+              <source srcset="./static/images/trainingdataset-satellite.webp" type="image/webp">
+              <img src="./static/images/trainingdataset-satellite.jpg"
+                alt="Satellite map with disjoint training, offline evaluation, and online evaluation regions, alongside example training instructions and held-out test episodes with plan critiques."
+                loading="lazy">
+            </picture>
           </a>
         </div>
         <figcaption><strong>Figure 3.</strong> <em>Left:</em> training, offline evaluation, and online evaluation
@@ -185,9 +191,12 @@
       <figure class="fig-single wide">
         <div class="imgwrap">
           <a href="./static/images/testinglocations.jpg">
-            <img src="./static/images/testinglocations.jpg"
-              alt="Six real-world deployment scenes grouped into detour rerouting, structural clues, and sign understanding, each with the executed route overlaid."
-              loading="lazy">
+            <picture>
+              <source srcset="./static/images/testinglocations.webp" type="image/webp">
+              <img src="./static/images/testinglocations.jpg"
+                alt="Six real-world deployment scenes grouped into detour rerouting, structural clues, and sign understanding, each with the executed route overlaid."
+                loading="lazy">
+            </picture>
           </a>
         </div>
         <figcaption><strong>Figure 4.</strong> The six deployment sites with executed routes overlaid. Detour rerouting
@@ -216,10 +225,13 @@
     <div class="wrap-wide">
       <figure class="fig-single wide">
         <div class="imgwrap">
-          <a href="./static/images/robotexperiments.png">
-            <img src="./static/images/robotexperiments.png"
-              alt="Left: average interventions per waypoint by cue category. Right: real-world success rate against intervention budget per waypoint."
-              loading="lazy">
+          <a href="./static/images/robotexperiments.jpg">
+            <picture>
+              <source srcset="./static/images/robotexperiments.webp" type="image/webp">
+              <img src="./static/images/robotexperiments.jpg"
+                alt="Left: average interventions per waypoint by cue category. Right: real-world success rate against intervention budget per waypoint."
+                loading="lazy">
+            </picture>
           </a>
         </div>
         <figcaption><strong>Figure 5.</strong> <em>Left:</em> average interventions per waypoint, overall and split by
@@ -305,10 +317,13 @@
     <div class="wrap-wide">
       <figure class="fig-single wide">
         <div class="imgwrap">
-          <a href="./static/images/combined_ablations_hausdorff.png">
-            <img src="./static/images/combined_ablations_hausdorff.png"
-              alt="Three boxplot panels of Hausdorff distance against refinement iteration: baseline comparisons, reward design ablations, and motion planner and critic ablations."
-              loading="lazy">
+          <a href="./static/images/combined_ablations_hausdorff.jpg">
+            <picture>
+              <source srcset="./static/images/combined_ablations_hausdorff.webp" type="image/webp">
+              <img src="./static/images/combined_ablations_hausdorff.jpg"
+                alt="Three boxplot panels of Hausdorff distance against refinement iteration: baseline comparisons, reward design ablations, and motion planner and critic ablations."
+                loading="lazy">
+            </picture>
           </a>
         </div>
         <figcaption><strong>Figure 6.</strong> Hausdorff distance to the reference plan against refinement iteration;

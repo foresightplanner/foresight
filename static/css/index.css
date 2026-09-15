@@ -353,6 +353,11 @@ ul.notes strong {
   line-height: 0
 }
 
+/* <picture> only selects a source; the <img> inside it carries the layout. */
+.imgwrap picture {
+  display: contents
+}
+
 figcaption {
   font-family: "Inter", sans-serif;
   font-size: .85rem;
